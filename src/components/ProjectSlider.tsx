@@ -72,7 +72,7 @@ export default function ProjectSlider() {
         );
         if (!res.ok) return;
         const data = await res.json();
-        const ignoredRepos = ['arsyrahmatullah', 'Arsyrahmatullah.github.io'];
+        const ignoredRepos = ['Arsyrahmatullah', 'Arsyrahmatullah.github.io'];
         const filtered = data.filter(
           (r: any) => !ignoredRepos.includes(r.name.toLowerCase())
         );
@@ -198,6 +198,7 @@ export default function ProjectSlider() {
           while (offset > half) offset -= N;
 
           const absOffset = Math.abs(offset);
+          const isCenter = absOffset < 0.5;
           const rotateY = offset * -22;
           const translateX = offset * 270;
           const translateY = absOffset * 12;
@@ -229,9 +230,11 @@ export default function ProjectSlider() {
                 <img
                   src={repo.coverImg}
                   alt={repo.title}
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 opacity-25"
+                  className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-80 ${
+                    isCenter ? 'grayscale-0 opacity-65' : 'grayscale opacity-25'
+                  }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
+                <div className={`absolute inset-0 transition-opacity duration-700 bg-gradient-to-t from-[#050505] ${isCenter ? 'via-[#050505]/50' : 'via-[#050505]/80'} to-transparent`} />
               </div>
 
               <div className="relative z-10 flex justify-between items-start">
