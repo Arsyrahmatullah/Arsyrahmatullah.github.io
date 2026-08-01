@@ -121,14 +121,14 @@ export default function FlightTextStage({
   };
 
   return (
-    <div id="flight-spacer" ref={spacerRef} className="relative h-[1200vh] touch-pan-y">
+    <div id="flight-spacer" ref={spacerRef} className="relative h-[1600vh] touch-pan-y">
       {/* Sticky viewport frame */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center z-10 px-4 sm:px-8 md:px-12">
         
         {/* ACT 0: TITLE & NAME (STARTING SIGN INCLUDED) */}
         <div
           className="absolute max-w-3xl w-full text-center space-y-6 transition-all duration-75 ease-out select-none"
-          style={getLayerStyle(0.0, 0.16, 'center')}
+          style={getLayerStyle(0.0, 0.12, 'center')}
         >
           <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs text-white/70 tracking-[0.25em] uppercase font-mono px-4 py-1.5 rounded-full">
             <span>Geophysics & Subsurface Physics</span>
@@ -159,7 +159,7 @@ export default function FlightTextStage({
         {/* ACT 1: RESEARCH INTERESTS */}
         <div
           className="absolute w-full max-w-4xl text-center space-y-6 transition-all duration-75 ease-out"
-          style={getLayerStyle(0.12, 0.30, 'right')}
+          style={getLayerStyle(0.10, 0.22, 'right')}
         >
           <div className="space-y-2">
             <span className="text-xs text-[#dfab54] tracking-[0.3em] uppercase font-bold font-mono">
@@ -179,10 +179,10 @@ export default function FlightTextStage({
           <ResearchInterestsTicker />
         </div>
 
-        {/* ACT 2: PROFILE & 3:4 PORTRAIT PHOTO (NO BOX BACKGROUND) */}
+        {/* ACT 2: PROFILE & 3:4 PORTRAIT PHOTO */}
         <div
           className="absolute max-w-4xl w-full transition-all duration-75 ease-out px-4 text-left"
-          style={getLayerStyle(0.26, 0.44, 'left')}
+          style={getLayerStyle(0.20, 0.32, 'left')}
         >
           <div className="space-y-6">
             <span className="text-xs text-[#dfab54] tracking-[0.3em] uppercase font-bold font-mono">
@@ -210,7 +210,7 @@ export default function FlightTextStage({
                 <p>
                   I am a Geophysical Engineering graduate from{' '}
                   <span className="text-white font-semibold">
-                    Institut Teknologi Bandung (ITB)
+                    Bandung Institute of Technology (ITB)
                   </span>
                   . My work focuses on subsurface time-lapse seismic monitoring, processing strain rate measurements from Distributed Acoustic Sensing (DAS) fiber optic arrays to track carbon dioxide plumes in real-time.
                 </p>
@@ -228,10 +228,10 @@ export default function FlightTextStage({
           </div>
         </div>
 
-        {/* ACT 3: EDUCATION & HONORS (NO BOX BACKGROUND) */}
+        {/* ACT 3: EDUCATION & HONORS */}
         <div
           className="absolute max-w-3xl w-full transition-all duration-75 ease-out px-4 text-left"
-          style={getLayerStyle(0.40, 0.58, 'right')}
+          style={getLayerStyle(0.30, 0.42, 'right')}
         >
           <div className="space-y-6">
             <div className="space-y-1">
@@ -254,16 +254,16 @@ export default function FlightTextStage({
               </div>
 
               <p className="text-white/70 text-xs sm:text-sm font-light leading-relaxed">
-                Awarded the <span className="text-white font-semibold">ITB Ganesha Karsa Award</span> for exceptional student leadership, community service, and academic contributions to the university.
+                Awarded the <span className="text-white font-semibold">ITB Ganesha Karsa Award</span> for exceptional student leadership, community service impact, and outstanding contributions to the university community.
               </p>
             </div>
           </div>
         </div>
 
-        {/* ACT 4: UNDERGRADUATE THESIS (NO BOX BACKGROUND) */}
+        {/* ACT 4: UNDERGRADUATE THESIS */}
         <div
           className="absolute max-w-3xl w-full transition-all duration-75 ease-out px-4 text-left"
-          style={getLayerStyle(0.54, 0.72, 'left')}
+          style={getLayerStyle(0.40, 0.52, 'left')}
         >
           <div className="space-y-6">
             <div className="space-y-1">
@@ -292,49 +292,134 @@ export default function FlightTextStage({
           </div>
         </div>
 
-        {/* ACT 5: LEADERSHIP & ORGANIZATIONS (NO BOX BACKGROUND) */}
+        {/* ACT 5: LEADERSHIP & ACTIVITIES - HMTG ITB */}
         <div
           className="absolute max-w-3xl w-full transition-all duration-75 ease-out px-4 text-left"
-          style={getLayerStyle(0.68, 0.86, 'right')}
+          style={getLayerStyle(0.50, 0.62, 'right')}
+        >
+          <div className="space-y-6">
+            <div className="space-y-1">
+              <span className="text-xs text-[#dfab54] tracking-[0.3em] uppercase font-bold font-mono">
+                Leadership & Activities
+              </span>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <h2 className="text-xl sm:text-2xl font-serif italic text-white">
+                  Geophysical Engineering Student Association (HMTG ITB)
+                </h2>
+                <span className="text-xs font-mono text-[#dfab54] uppercase tracking-widest font-bold">
+                  Head of Community Service Division
+                </span>
+              </div>
+              <div className="flex justify-between items-center text-xs text-white/50 font-mono pt-1">
+                <span>Bandung</span>
+                <span>Jan 2023 – Mar 2024</span>
+              </div>
+            </div>
+
+            <ul className="space-y-3 text-xs sm:text-sm text-white/80 font-light leading-relaxed list-disc list-inside">
+              <li>
+                Directed divisional operations, leading cross-functional engineering student teams to successfully design and execute regional geological hazard mitigation and social outreach programs.
+              </li>
+              <li>
+                Coordinated multi-stakeholder collaboration with local authorities to conduct landslide and earthquake risk communication seminars.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* ACT 6: LEADERSHIP & ACTIVITIES - KKN ITB 2023 & IUGC */}
+        <div
+          className="absolute max-w-3xl w-full transition-all duration-75 ease-out px-4 text-left"
+          style={getLayerStyle(0.60, 0.72, 'left')}
         >
           <div className="space-y-6">
             <span className="text-xs text-[#dfab54] tracking-[0.3em] uppercase font-bold font-mono">
-              Leadership & Organizations
+              Leadership & Activities
             </span>
 
-            <div className="space-y-4 text-xs sm:text-sm text-white/80">
-              <div className="space-y-1">
-                <div className="flex justify-between items-center text-white font-bold">
-                  <span>HMTG ITB (Geological Engineering Student Association)</span>
-                  <span className="text-[#dfab54] text-xs font-mono">Head of Division</span>
+            <div className="space-y-6 text-xs sm:text-sm">
+              {/* KKN ITB 2023 */}
+              <div className="space-y-2 border-l-2 border-[#dfab54]/40 pl-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <span className="text-white font-bold text-base">ITB Student Community Service (KKN ITB 2023)</span>
+                  <span className="text-[#dfab54] text-xs font-mono font-bold">Vice Head of Media Division & Group Mentor</span>
                 </div>
-                <p className="text-white/60 font-light">
-                  Head of Community Service Division, spearheading geological hazard mitigation initiatives and community engagement programs.
-                </p>
+                <div className="text-[11px] font-mono text-white/50">Bandung • Feb 2023 – Dec 2023</div>
+                <ul className="space-y-1.5 text-white/70 font-light leading-relaxed list-disc list-inside pt-1">
+                  <li>
+                    Managed comprehensive communication workflows, public relations content, and media strategy to promote rural development achievements.
+                  </li>
+                  <li>
+                    Served as field mentor, driving conflict resolution and logistics management for diverse on-the-ground volunteer groups.
+                  </li>
+                </ul>
               </div>
 
-              <div className="space-y-1 pt-2">
-                <div className="flex justify-between items-center text-white font-bold">
-                  <span>KKN ITB 2023 & IUGC</span>
-                  <span className="text-[#dfab54] text-xs font-mono">Vice Head & Manager</span>
+              {/* IUGC */}
+              <div className="space-y-2 border-l-2 border-[#dfab54]/40 pl-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <span className="text-white font-bold text-base">International Undergraduate Geophysics Competition (IUGC)</span>
+                  <span className="text-[#dfab54] text-xs font-mono font-bold">Head Social Media Manager</span>
                 </div>
-                <p className="text-white/60 font-light">
-                  Vice Head of Media for KKN ITB 2023, and Head Social Media Manager for the Indonesian Undergraduate Geophysics Competition (IUGC).
-                </p>
-              </div>
-
-              <div className="pt-2 text-xs font-mono text-white/50">
-                <span className="text-white/30 text-[10px] uppercase block">Certifications</span>
-                <span className="text-white font-bold">SEG DISC (2024) | Carbon Management Certification (ITB)</span>
+                <div className="text-[11px] font-mono text-white/50">Bandung • Jan 2022 – Feb 2023</div>
+                <ul className="space-y-1.5 text-white/70 font-light leading-relaxed list-disc list-inside pt-1">
+                  <li>
+                    Spearheaded global marketing and digital promotion campaigns, utilizing web analytics to maximize registration metrics and international outreach.
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
 
-        {/* ACT 6: ARCHIVE OVERVIEW */}
+        {/* ACT 7: INDUSTRY CERTIFICATIONS */}
+        <div
+          className="absolute max-w-3xl w-full transition-all duration-75 ease-out px-4 text-left"
+          style={getLayerStyle(0.72, 0.85, 'right')}
+        >
+          <div className="space-y-6">
+            <span className="text-xs text-[#dfab54] tracking-[0.3em] uppercase font-bold font-mono">
+              Industry Certifications
+            </span>
+
+            <div className="space-y-4 text-xs sm:text-sm">
+              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 space-y-1">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <span className="text-white font-bold text-sm sm:text-base">SEG DISC (2024)</span>
+                  <span className="text-[#dfab54] text-xs font-mono">ITB & NTNU</span>
+                </div>
+                <p className="text-white/70 font-light leading-relaxed">
+                  Storage of Carbon Dioxide in Saline Aquifers – Building Confidence by Forecasting and Monitoring (ITB & Norwegian University of Science and Technology).
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 space-y-1">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <span className="text-white font-bold text-sm sm:text-base">Carbon Management Certification (2024)</span>
+                  <span className="text-[#dfab54] text-xs font-mono">ITB</span>
+                </div>
+                <p className="text-white/70 font-light leading-relaxed">
+                  Carbon Management and Understanding Through Digital Tools (ITB).
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 space-y-1">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <span className="text-white font-bold text-sm sm:text-base">Decarbonizing Industry (2024)</span>
+                  <span className="text-[#dfab54] text-xs font-mono">ITB</span>
+                </div>
+                <p className="text-white/70 font-light leading-relaxed">
+                  Integrating Surface Facilities to Support Carbon Capture Utilization and Storage (ITB).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ACT 8: ARCHIVE OVERVIEW */}
         <div
           className="absolute max-w-2xl w-full text-center space-y-6 transition-all duration-75 ease-out"
-          style={getLayerStyle(0.82, 1.00, 'center')}
+          style={getLayerStyle(0.85, 1.00, 'center')}
         >
           <span className="text-xs text-[#dfab54] tracking-[0.3em] uppercase font-bold font-mono">
             Projects & Code
@@ -348,7 +433,7 @@ export default function FlightTextStage({
           </h2>
 
           <p className="text-white/70 text-sm sm:text-base font-light max-w-md mx-auto">
-            Explore interactive open-source repositories and numerical geophysics projects.
+            Explore computational geophysics software, wave propagation solvers, and carbon storage screening toolkits.
           </p>
 
           <button
