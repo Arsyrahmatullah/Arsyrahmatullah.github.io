@@ -304,7 +304,7 @@ export default function FlightTextStage({
               </span>
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <h2 className="text-xl sm:text-2xl font-serif italic text-white">
-                  Geophysical Engineering Student Association (HIMA TG "TERRA" ITB)
+                  Geophysical Engineering Student Association (HIMA TG TERRA ITB)
                 </h2>
                 <span className="text-xs font-mono text-[#dfab54] uppercase tracking-widest font-bold">
                   Head of Community Service Division
@@ -339,7 +339,7 @@ export default function FlightTextStage({
 
             <div className="space-y-6 text-xs sm:text-sm">
               {/* KKN ITB 2023 */}
-              <div className="space-y-2 border-l-2 border-[#dfab54]/40 pl-4">
+              <div className="space-y-2">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                   <span className="text-white font-bold text-base">ITB Student Community Service (KKN ITB 2023)</span>
                   <span className="text-[#dfab54] text-xs font-mono font-bold">Vice Head of Media Division & Group Mentor</span>
@@ -356,7 +356,7 @@ export default function FlightTextStage({
               </div>
 
               {/* IUGC */}
-              <div className="space-y-2 border-l-2 border-[#dfab54]/40 pl-4">
+              <div className="space-y-2">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                   <span className="text-white font-bold text-base">International Undergraduate Geophysics Competition (IUGC)</span>
                   <span className="text-[#dfab54] text-xs font-mono font-bold">Head Social Media Manager</span>
@@ -382,8 +382,8 @@ export default function FlightTextStage({
               Industry Certifications
             </span>
 
-            <div className="space-y-4 text-xs sm:text-sm">
-              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 space-y-1">
+            <div className="space-y-5 text-xs sm:text-sm">
+              <div className="space-y-1">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                   <span className="text-white font-bold text-sm sm:text-base">SEG DISC (2024)</span>
                   <span className="text-[#dfab54] text-xs font-mono">ITB & NTNU</span>
@@ -393,7 +393,7 @@ export default function FlightTextStage({
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 space-y-1">
+              <div className="space-y-1">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                   <span className="text-white font-bold text-sm sm:text-base">Carbon Management Certification (2024)</span>
                   <span className="text-[#dfab54] text-xs font-mono">ITB</span>
@@ -403,7 +403,7 @@ export default function FlightTextStage({
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 space-y-1">
+              <div className="space-y-1">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                   <span className="text-white font-bold text-sm sm:text-base">Decarbonizing Industry (2024)</span>
                   <span className="text-[#dfab54] text-xs font-mono">ITB</span>
