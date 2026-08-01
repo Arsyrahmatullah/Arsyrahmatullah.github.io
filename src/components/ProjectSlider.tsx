@@ -3,52 +3,64 @@ import { GithubRepo } from '../types';
 
 const FALLBACK_REPOS: GithubRepo[] = [
   {
-    title: 'CO2-Plume-Seismic-Monitoring',
-    subtitle: 'Synthetic seismology modeling tools for CCS monitoring systems',
+    title: 'ccs screening',
+    subtitle: 'CO2 Capture and Storage Site Screening Analysis',
     description:
-      'A computational geophysics toolkit built to simulate time-lapse VSP and DAS seismic arrays. Implements Kirchhoff depth migrations to track carbon dioxide injection plumes and de-risk subsurface storage facilities.',
-    primaryLanguage: 'Python',
-    stars: '5 ★',
-    url: 'https://github.com/Arsyrahmatullah',
+      'Jupyter notebook toolkit evaluating geophysical criteria, reservoir capacities, and caprock seal integrities for geological carbon storage.',
+    primaryLanguage: 'Jupyter Notebook',
+    stars: '0 ★',
+    url: 'https://github.com/Arsyrahmatullah/ccs-screening',
     systemClass: 'GitHub Repository',
     coverImg:
       'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80',
   },
   {
-    title: 'Acoustic-Wave-Simulation',
-    subtitle: 'Numerical solvers and ray-tracing models for layered geological media',
+    title: 'CarbonEcho',
+    subtitle: 'Seismic Reflection Modeling & Subsurface Analysis',
     description:
-      'MATLAB and Python modules designed for acoustic and elastic wave propagation. Includes custom finite-difference code for wave equation solutions used in time-lapse seismology analysis.',
-    primaryLanguage: 'MATLAB',
-    stars: '4 ★',
-    url: 'https://github.com/Arsyrahmatullah',
+      'Computational geophysics tools for wavefield propagation and acoustic response simulation in carbon injection reservoirs.',
+    primaryLanguage: 'Jupyter Notebook',
+    stars: '0 ★',
+    url: 'https://github.com/Arsyrahmatullah/CarbonEcho',
     systemClass: 'GitHub Repository',
     coverImg:
       'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
   },
   {
-    title: 'Subsurface-Fault-Mapping-Gravity',
-    subtitle: 'Inversion routines for processing gravity and magnetic field vectors',
+    title: 'ccs VSP suite',
+    subtitle: 'Vertical Seismic Profiling Suite for Carbon Storage',
     description:
-      'Computational tools for spatial density and gravity inversion. Delineates bedrock geometry, active fault paths, and detects deep groundwater aquifers under post-earthquake geological regimes.',
+      'Python modeling package for VSP acquisition layout design and time-lapse seismic plume tracking.',
     primaryLanguage: 'Python',
-    stars: '4 ★',
-    url: 'https://github.com/Arsyrahmatullah',
+    stars: '0 ★',
+    url: 'https://github.com/Arsyrahmatullah/ccs-VSP-suite',
     systemClass: 'GitHub Repository',
     coverImg:
       'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
   },
   {
-    title: 'Time-Lapse-VSP-DAS-Modeling',
-    subtitle: 'Distributed Acoustic Sensing (DAS) synthetic seismogram generator',
+    title: 'PlumeSense',
+    subtitle: 'CO2 Injection Plume Monitoring & Fiber Optic Strain Sensing',
     description:
-      'High-resolution fiber optic strain simulation in vertical seismic profiling geometry. Converts strain rate measurements into synthetic time-lapse velocity anomalies.',
+      'Algorithmic models converting fiber optic strain sensing data (DAS) into subsurface saturation map estimates.',
     primaryLanguage: 'Python',
-    stars: '6 ★',
-    url: 'https://github.com/Arsyrahmatullah',
+    stars: '0 ★',
+    url: 'https://github.com/Arsyrahmatullah/PlumeSense',
     systemClass: 'GitHub Repository',
     coverImg:
       'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    title: 'ccs monitoring',
+    subtitle: 'CO2 monitoring and storage simulation',
+    description:
+      'CO2 monitoring and storage simulation routines using finite-difference wave solvers and time-lapse inversion.',
+    primaryLanguage: 'Python',
+    stars: '0 ★',
+    url: 'https://github.com/Arsyrahmatullah/ccs-monitoring',
+    systemClass: 'GitHub Repository',
+    coverImg:
+      'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80',
   },
 ];
 
@@ -72,10 +84,22 @@ export default function ProjectSlider() {
         );
         if (!res.ok) return;
         const data = await res.json();
-        const ignoredRepos = ['Arsyrahmatullah', 'Arsyrahmatullah.github.io'];
-        const filtered = data.filter(
-          (r: any) => !ignoredRepos.includes(r.name.toLowerCase())
-        );
+        if (!Array.isArray(data)) return;
+
+        const filtered = data.filter((r: any) => {
+          if (!r || !r.name) return false;
+          const name = String(r.name).toLowerCase().trim();
+          if (
+            name === 'arsyrahmatullah' ||
+            name === 'arsyrahmatullah.github.io' ||
+            name.endsWith('.github.io') ||
+            name.includes('arsyrahmatullah')
+          ) {
+            return false;
+          }
+          return true;
+        });
+
         if (filtered.length === 0) return;
 
         const mapped: GithubRepo[] = filtered.map((r: any, idx: number) => {
