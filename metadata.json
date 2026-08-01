@@ -1,0 +1,6 @@
+{
+  "name": "Arsy Nuur Rahmatullah Portfolio",
+  "description": "Computational Geophysics & Seismology Portfolio featuring Three.js 3D transitions, running text ticker, clean loader, and interactive project archive.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
