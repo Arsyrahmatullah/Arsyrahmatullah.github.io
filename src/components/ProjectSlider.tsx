@@ -133,7 +133,13 @@ export default function ProjectSlider() {
   useEffect(() => {
     let animId: number;
     const loop = () => {
-      setCurrentIndex((prev) => prev + (targetIndex - prev) * 0.14);
+      setCurrentIndex((prev) => {
+        const diff = targetIndex - prev;
+        if (Math.abs(diff) < 0.0002) {
+          return targetIndex;
+        }
+        return prev + diff * 0.14;
+      });
       animId = requestAnimationFrame(loop);
     };
     animId = requestAnimationFrame(loop);
@@ -244,11 +250,12 @@ export default function ProjectSlider() {
                 }
               }}
               style={{
-                transform: `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
+                transform: `translate3d(${translateX.toFixed(1)}px, ${translateY.toFixed(1)}px, ${translateZ.toFixed(1)}px) rotateY(${rotateY.toFixed(1)}deg) scale(${scale.toFixed(3)})`,
                 zIndex,
                 opacity,
+                willChange: 'transform, opacity',
               }}
-              className="absolute w-[280px] h-[370px] sm:w-[320px] sm:h-[400px] rounded-[32px] bg-[#080808]/90 p-6 flex flex-col justify-between overflow-hidden shadow-2xl transition-transform duration-75 ease-out group"
+              className="absolute w-[280px] h-[370px] sm:w-[320px] sm:h-[400px] rounded-[32px] bg-[#080808]/90 p-6 flex flex-col justify-between overflow-hidden shadow-2xl group"
             >
               <div className="absolute inset-0 z-0 overflow-hidden">
                 <img

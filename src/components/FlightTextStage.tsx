@@ -19,7 +19,7 @@ export default function FlightTextStage({
     const handleScroll = () => {
       if (!spacerRef.current) return;
       const rect = spacerRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      const viewportHeight = document.documentElement.clientHeight || window.innerHeight;
       const scrollable = spacerRef.current.offsetHeight - viewportHeight;
       if (scrollable <= 0) return;
       const rawP = Math.min(1, Math.max(0, -rect.top / scrollable));
@@ -27,7 +27,6 @@ export default function FlightTextStage({
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('touchmove', handleScroll, { passive: true });
     window.addEventListener('resize', handleScroll);
     handleScroll();
 
@@ -35,15 +34,19 @@ export default function FlightTextStage({
     const loop = () => {
       animId = requestAnimationFrame(loop);
       const targetP = scrollProgressRef.current;
-      // High-precision smooth lerp for continuous mobile and desktop flight
-      curP += (targetP - curP) * 0.1;
-      setSmoothedProgress(curP);
+      const diff = targetP - curP;
+      if (Math.abs(diff) > 0.00005) {
+        curP += diff * 0.12;
+        setSmoothedProgress(Math.round(curP * 100000) / 100000);
+      } else if (curP !== targetP) {
+        curP = targetP;
+        setSmoothedProgress(targetP);
+      }
     };
     animId = requestAnimationFrame(loop);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('touchmove', handleScroll);
       window.removeEventListener('resize', handleScroll);
       cancelAnimationFrame(animId);
     };
@@ -113,7 +116,7 @@ export default function FlightTextStage({
 
     return {
       opacity,
-      transform: `perspective(1000px) translate3d(${translateX}px, ${translateY}px, ${translateZ}px) scale(${scale})`,
+      transform: `perspective(1000px) translate3d(${translateX.toFixed(2)}px, ${translateY.toFixed(2)}px, ${translateZ.toFixed(2)}px) scale(${scale.toFixed(3)})`,
       pointerEvents: opacity > 0.35 ? ('auto' as const) : ('none' as const),
       visibility: opacity > 0.01 ? ('visible' as const) : ('hidden' as const),
       willChange: 'transform, opacity',
@@ -127,7 +130,7 @@ export default function FlightTextStage({
         
         {/* ACT 0: TITLE & NAME (STARTING SIGN INCLUDED) */}
         <div
-          className="absolute max-w-3xl w-full text-center space-y-6 transition-all duration-75 ease-out select-none"
+          className="absolute max-w-3xl w-full text-center space-y-6 select-none"
           style={getLayerStyle(0.0, 0.12, 'center')}
         >
           <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs text-white/70 tracking-[0.25em] uppercase font-mono px-4 py-1.5 rounded-full">
@@ -158,7 +161,7 @@ export default function FlightTextStage({
 
         {/* ACT 1: RESEARCH INTERESTS */}
         <div
-          className="absolute w-full max-w-4xl text-center space-y-6 transition-all duration-75 ease-out"
+          className="absolute w-full max-w-4xl text-center space-y-6"
           style={getLayerStyle(0.10, 0.22, 'right')}
         >
           <div className="space-y-2">
@@ -181,7 +184,7 @@ export default function FlightTextStage({
 
         {/* ACT 2: PROFILE & 3:4 PORTRAIT PHOTO */}
         <div
-          className="absolute max-w-4xl w-full transition-all duration-75 ease-out px-4 text-left"
+          className="absolute max-w-4xl w-full px-4 text-left"
           style={getLayerStyle(0.20, 0.32, 'left')}
         >
           <div className="space-y-6">
@@ -230,7 +233,7 @@ export default function FlightTextStage({
 
         {/* ACT 3: EDUCATION & HONORS */}
         <div
-          className="absolute max-w-3xl w-full transition-all duration-75 ease-out px-4 text-left"
+          className="absolute max-w-3xl w-full px-4 text-left"
           style={getLayerStyle(0.30, 0.42, 'right')}
         >
           <div className="space-y-6">
@@ -262,7 +265,7 @@ export default function FlightTextStage({
 
         {/* ACT 4: UNDERGRADUATE THESIS */}
         <div
-          className="absolute max-w-3xl w-full transition-all duration-75 ease-out px-4 text-left"
+          className="absolute max-w-3xl w-full px-4 text-left"
           style={getLayerStyle(0.40, 0.52, 'left')}
         >
           <div className="space-y-6">
@@ -292,9 +295,9 @@ export default function FlightTextStage({
           </div>
         </div>
 
-        {/* ACT 5: LEADERSHIP & ACTIVITIES - HMTG ITB */}
+        {/* ACT 5: LEADERSHIP & ACTIVITIES - HIMA TG TERRA ITB */}
         <div
-          className="absolute max-w-3xl w-full transition-all duration-75 ease-out px-4 text-left"
+          className="absolute max-w-3xl w-full px-4 text-left"
           style={getLayerStyle(0.50, 0.62, 'right')}
         >
           <div className="space-y-6">
@@ -304,7 +307,7 @@ export default function FlightTextStage({
               </span>
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <h2 className="text-xl sm:text-2xl font-serif italic text-white">
-                  Geophysical Engineering Student Association (HIMA TG TERRA ITB)
+                  HIMA TG "TERRA" ITB
                 </h2>
                 <span className="text-xs font-mono text-[#dfab54] uppercase tracking-widest font-bold">
                   Head of Community Service Division
@@ -329,7 +332,7 @@ export default function FlightTextStage({
 
         {/* ACT 6: LEADERSHIP & ACTIVITIES - KKN ITB 2023 & IUGC */}
         <div
-          className="absolute max-w-3xl w-full transition-all duration-75 ease-out px-4 text-left"
+          className="absolute max-w-3xl w-full px-4 text-left"
           style={getLayerStyle(0.60, 0.72, 'left')}
         >
           <div className="space-y-6">
@@ -374,7 +377,7 @@ export default function FlightTextStage({
 
         {/* ACT 7: INDUSTRY CERTIFICATIONS */}
         <div
-          className="absolute max-w-3xl w-full transition-all duration-75 ease-out px-4 text-left"
+          className="absolute max-w-3xl w-full px-4 text-left"
           style={getLayerStyle(0.72, 0.85, 'right')}
         >
           <div className="space-y-6">
@@ -418,7 +421,7 @@ export default function FlightTextStage({
 
         {/* ACT 8: ARCHIVE OVERVIEW */}
         <div
-          className="absolute max-w-2xl w-full text-center space-y-6 transition-all duration-75 ease-out"
+          className="absolute max-w-2xl w-full text-center space-y-6"
           style={getLayerStyle(0.85, 1.00, 'center')}
         >
           <span className="text-xs text-[#dfab54] tracking-[0.3em] uppercase font-bold font-mono">
