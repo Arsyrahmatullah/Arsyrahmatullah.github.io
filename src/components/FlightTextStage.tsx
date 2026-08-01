@@ -304,7 +304,7 @@ export default function FlightTextStage({
               </span>
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <h2 className="text-xl sm:text-2xl font-serif italic text-white">
-                  Geophysical Engineering Student Association (HMTG ITB)
+                  Geophysical Engineering Student Association (HIMA TG "TERRA" ITB)
                 </h2>
                 <span className="text-xs font-mono text-[#dfab54] uppercase tracking-widest font-bold">
                   Head of Community Service Division
