@@ -72,7 +72,7 @@ export default function ProjectSlider() {
         );
         if (!res.ok) return;
         const data = await res.json();
-        const ignoredRepos = ['arsyrahmatullah', 'arsyrahmatullah.github.io'];
+        const ignoredRepos = ['arsyrahmatullah', 'Arsyrahmatullah.github.io'];
         const filtered = data.filter(
           (r: any) => !ignoredRepos.includes(r.name.toLowerCase())
         );
